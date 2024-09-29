@@ -1,0 +1,6 @@
+# GraapeInvestment
+yfinance
+pandas
+numpy
+matplotlib
+ipykernel
