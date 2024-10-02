@@ -1,0 +1,268 @@
+2024-10-02 22:26:33,108 - INFO - Starting Traditional Assets backtest.
+2024-10-02 22:26:33,108 - INFO - Fetching historical price data for Traditional Assets from yfinance.
+2024-10-02 22:26:34,015 - INFO - Fetched data for tickers: ['VGT', 'XLK', 'IYT', 'QQQ', 'VPU', 'GLD', 'VHT', 'SUSA', 'ESGU']
+2024-10-02 22:26:34,015 - INFO - Data after forward fill and dropna: 250 rows and 9 columns.
+2024-10-02 22:26:34,015 - INFO - Rebalance dates: DatetimeIndex(['2023-10-02', '2023-10-09', '2023-10-16', '2023-10-23',
+               '2023-10-30', '2023-11-06', '2023-11-13', '2023-11-20',
+               '2023-11-27', '2023-12-04', '2023-12-11', '2023-12-18',
+               '2023-12-25', '2024-01-01', '2024-01-08', '2024-01-15',
+               '2024-01-22', '2024-01-29', '2024-02-05', '2024-02-12',
+               '2024-02-19', '2024-02-26', '2024-03-04', '2024-03-11',
+               '2024-03-18', '2024-03-25', '2024-04-01', '2024-04-08',
+               '2024-04-15', '2024-04-22', '2024-04-29', '2024-05-06',
+               '2024-05-13', '2024-05-20', '2024-05-27', '2024-06-03',
+               '2024-06-10', '2024-06-17', '2024-06-24', '2024-07-01',
+               '2024-07-08', '2024-07-15', '2024-07-22', '2024-07-29',
+               '2024-08-05', '2024-08-12', '2024-08-19', '2024-08-26',
+               '2024-09-02', '2024-09-09', '2024-09-16', '2024-09-23'],
+              dtype='datetime64[ns]', freq='W-MON')
+2024-10-02 22:26:34,028 - INFO - Rebalancing portfolio on 2023-10-02
+2024-10-02 22:26:34,028 - WARNING - Rebalance date 2023-10-02 not found in data index. Skipping this date.
+2024-10-02 22:26:34,029 - INFO - Rebalancing portfolio on 2023-10-09
+2024-10-02 22:26:34,029 - WARNING - Rebalance date 2023-10-09 not found in data index. Skipping this date.
+2024-10-02 22:26:34,029 - INFO - Rebalancing portfolio on 2023-10-16
+2024-10-02 22:26:34,030 - WARNING - Rebalance date 2023-10-16 not found in data index. Skipping this date.
+2024-10-02 22:26:34,030 - INFO - Rebalancing portfolio on 2023-10-23
+2024-10-02 22:26:34,030 - WARNING - Rebalance date 2023-10-23 not found in data index. Skipping this date.
+2024-10-02 22:26:34,030 - INFO - Rebalancing portfolio on 2023-10-30
+2024-10-02 22:26:34,031 - WARNING - Rebalance date 2023-10-30 not found in data index. Skipping this date.
+2024-10-02 22:26:34,032 - INFO - Rebalancing portfolio on 2023-11-06
+2024-10-02 22:26:34,032 - WARNING - Rebalance date 2023-11-06 not found in data index. Skipping this date.
+2024-10-02 22:26:34,032 - INFO - Rebalancing portfolio on 2023-11-13
+2024-10-02 22:26:34,032 - WARNING - Rebalance date 2023-11-13 not found in data index. Skipping this date.
+2024-10-02 22:26:34,032 - INFO - Rebalancing portfolio on 2023-11-20
+2024-10-02 22:26:34,032 - WARNING - Rebalance date 2023-11-20 not found in data index. Skipping this date.
+2024-10-02 22:26:34,032 - INFO - Rebalancing portfolio on 2023-11-27
+2024-10-02 22:26:34,033 - WARNING - Rebalance date 2023-11-27 not found in data index. Skipping this date.
+2024-10-02 22:26:34,033 - INFO - Rebalancing portfolio on 2023-12-04
+2024-10-02 22:26:34,033 - WARNING - Rebalance date 2023-12-04 not found in data index. Skipping this date.
+2024-10-02 22:26:34,033 - INFO - Rebalancing portfolio on 2023-12-11
+2024-10-02 22:26:34,033 - WARNING - Rebalance date 2023-12-11 not found in data index. Skipping this date.
+2024-10-02 22:26:34,033 - INFO - Rebalancing portfolio on 2023-12-18
+2024-10-02 22:26:34,033 - WARNING - Rebalance date 2023-12-18 not found in data index. Skipping this date.
+2024-10-02 22:26:34,033 - INFO - Rebalancing portfolio on 2023-12-25
+2024-10-02 22:26:34,033 - WARNING - Rebalance date 2023-12-25 not found in data index. Skipping this date.
+2024-10-02 22:26:34,033 - INFO - Rebalancing portfolio on 2024-01-01
+2024-10-02 22:26:34,033 - WARNING - Rebalance date 2024-01-01 not found in data index. Skipping this date.
+2024-10-02 22:26:34,033 - INFO - Rebalancing portfolio on 2024-01-08
+2024-10-02 22:26:34,033 - WARNING - Rebalance date 2024-01-08 not found in data index. Skipping this date.
+2024-10-02 22:26:34,033 - INFO - Rebalancing portfolio on 2024-01-15
+2024-10-02 22:26:34,033 - WARNING - Rebalance date 2024-01-15 not found in data index. Skipping this date.
+2024-10-02 22:26:34,033 - INFO - Rebalancing portfolio on 2024-01-22
+2024-10-02 22:26:34,033 - WARNING - Rebalance date 2024-01-22 not found in data index. Skipping this date.
+2024-10-02 22:26:34,033 - INFO - Rebalancing portfolio on 2024-01-29
+2024-10-02 22:26:34,033 - WARNING - Rebalance date 2024-01-29 not found in data index. Skipping this date.
+2024-10-02 22:26:34,037 - INFO - Rebalancing portfolio on 2024-02-05
+2024-10-02 22:26:34,037 - WARNING - Rebalance date 2024-02-05 not found in data index. Skipping this date.
+2024-10-02 22:26:34,037 - INFO - Rebalancing portfolio on 2024-02-12
+2024-10-02 22:26:34,037 - WARNING - Rebalance date 2024-02-12 not found in data index. Skipping this date.
+2024-10-02 22:26:34,038 - INFO - Rebalancing portfolio on 2024-02-19
+2024-10-02 22:26:34,038 - WARNING - Rebalance date 2024-02-19 not found in data index. Skipping this date.
+2024-10-02 22:26:34,038 - INFO - Rebalancing portfolio on 2024-02-26
+2024-10-02 22:26:34,038 - WARNING - Rebalance date 2024-02-26 not found in data index. Skipping this date.
+2024-10-02 22:26:34,039 - INFO - Rebalancing portfolio on 2024-03-04
+2024-10-02 22:26:34,039 - WARNING - Rebalance date 2024-03-04 not found in data index. Skipping this date.
+2024-10-02 22:26:34,039 - INFO - Rebalancing portfolio on 2024-03-11
+2024-10-02 22:26:34,039 - WARNING - Rebalance date 2024-03-11 not found in data index. Skipping this date.
+2024-10-02 22:26:34,040 - INFO - Rebalancing portfolio on 2024-03-18
+2024-10-02 22:26:34,040 - WARNING - Rebalance date 2024-03-18 not found in data index. Skipping this date.
+2024-10-02 22:26:34,040 - INFO - Rebalancing portfolio on 2024-03-25
+2024-10-02 22:26:34,040 - WARNING - Rebalance date 2024-03-25 not found in data index. Skipping this date.
+2024-10-02 22:26:34,040 - INFO - Rebalancing portfolio on 2024-04-01
+2024-10-02 22:26:34,041 - WARNING - Rebalance date 2024-04-01 not found in data index. Skipping this date.
+2024-10-02 22:26:34,041 - INFO - Rebalancing portfolio on 2024-04-08
+2024-10-02 22:26:34,041 - WARNING - Rebalance date 2024-04-08 not found in data index. Skipping this date.
+2024-10-02 22:26:34,041 - INFO - Rebalancing portfolio on 2024-04-15
+2024-10-02 22:26:34,041 - WARNING - Rebalance date 2024-04-15 not found in data index. Skipping this date.
+2024-10-02 22:26:34,042 - INFO - Rebalancing portfolio on 2024-04-22
+2024-10-02 22:26:34,042 - WARNING - Rebalance date 2024-04-22 not found in data index. Skipping this date.
+2024-10-02 22:26:34,042 - INFO - Rebalancing portfolio on 2024-04-29
+2024-10-02 22:26:34,042 - WARNING - Rebalance date 2024-04-29 not found in data index. Skipping this date.
+2024-10-02 22:26:34,043 - INFO - Rebalancing portfolio on 2024-05-06
+2024-10-02 22:26:34,043 - WARNING - Rebalance date 2024-05-06 not found in data index. Skipping this date.
+2024-10-02 22:26:34,043 - INFO - Rebalancing portfolio on 2024-05-13
+2024-10-02 22:26:34,043 - WARNING - Rebalance date 2024-05-13 not found in data index. Skipping this date.
+2024-10-02 22:26:34,044 - INFO - Rebalancing portfolio on 2024-05-20
+2024-10-02 22:26:34,044 - WARNING - Rebalance date 2024-05-20 not found in data index. Skipping this date.
+2024-10-02 22:26:34,044 - INFO - Rebalancing portfolio on 2024-05-27
+2024-10-02 22:26:34,045 - WARNING - Rebalance date 2024-05-27 not found in data index. Skipping this date.
+2024-10-02 22:26:34,045 - INFO - Rebalancing portfolio on 2024-06-03
+2024-10-02 22:26:34,045 - WARNING - Rebalance date 2024-06-03 not found in data index. Skipping this date.
+2024-10-02 22:26:34,045 - INFO - Rebalancing portfolio on 2024-06-10
+2024-10-02 22:26:34,045 - WARNING - Rebalance date 2024-06-10 not found in data index. Skipping this date.
+2024-10-02 22:26:34,046 - INFO - Rebalancing portfolio on 2024-06-17
+2024-10-02 22:26:34,046 - WARNING - Rebalance date 2024-06-17 not found in data index. Skipping this date.
+2024-10-02 22:26:34,047 - INFO - Rebalancing portfolio on 2024-06-24
+2024-10-02 22:26:34,047 - WARNING - Rebalance date 2024-06-24 not found in data index. Skipping this date.
+2024-10-02 22:26:34,047 - INFO - Rebalancing portfolio on 2024-07-01
+2024-10-02 22:26:34,047 - WARNING - Rebalance date 2024-07-01 not found in data index. Skipping this date.
+2024-10-02 22:26:34,047 - INFO - Rebalancing portfolio on 2024-07-08
+2024-10-02 22:26:34,047 - WARNING - Rebalance date 2024-07-08 not found in data index. Skipping this date.
+2024-10-02 22:26:34,048 - INFO - Rebalancing portfolio on 2024-07-15
+2024-10-02 22:26:34,048 - WARNING - Rebalance date 2024-07-15 not found in data index. Skipping this date.
+2024-10-02 22:26:34,048 - INFO - Rebalancing portfolio on 2024-07-22
+2024-10-02 22:26:34,048 - WARNING - Rebalance date 2024-07-22 not found in data index. Skipping this date.
+2024-10-02 22:26:34,049 - INFO - Rebalancing portfolio on 2024-07-29
+2024-10-02 22:26:34,049 - WARNING - Rebalance date 2024-07-29 not found in data index. Skipping this date.
+2024-10-02 22:26:34,049 - INFO - Rebalancing portfolio on 2024-08-05
+2024-10-02 22:26:34,049 - WARNING - Rebalance date 2024-08-05 not found in data index. Skipping this date.
+2024-10-02 22:26:34,049 - INFO - Rebalancing portfolio on 2024-08-12
+2024-10-02 22:26:34,050 - WARNING - Rebalance date 2024-08-12 not found in data index. Skipping this date.
+2024-10-02 22:26:34,050 - INFO - Rebalancing portfolio on 2024-08-19
+2024-10-02 22:26:34,050 - WARNING - Rebalance date 2024-08-19 not found in data index. Skipping this date.
+2024-10-02 22:26:34,050 - INFO - Rebalancing portfolio on 2024-08-26
+2024-10-02 22:26:34,050 - WARNING - Rebalance date 2024-08-26 not found in data index. Skipping this date.
+2024-10-02 22:26:34,050 - INFO - Rebalancing portfolio on 2024-09-02
+2024-10-02 22:26:34,050 - WARNING - Rebalance date 2024-09-02 not found in data index. Skipping this date.
+2024-10-02 22:26:34,050 - INFO - Rebalancing portfolio on 2024-09-09
+2024-10-02 22:26:34,050 - WARNING - Rebalance date 2024-09-09 not found in data index. Skipping this date.
+2024-10-02 22:26:34,052 - INFO - Rebalancing portfolio on 2024-09-16
+2024-10-02 22:26:34,052 - WARNING - Rebalance date 2024-09-16 not found in data index. Skipping this date.
+2024-10-02 22:26:34,052 - INFO - Rebalancing portfolio on 2024-09-23
+2024-10-02 22:26:34,052 - WARNING - Rebalance date 2024-09-23 not found in data index. Skipping this date.
+2024-10-02 22:26:34,052 - INFO - Completed backtest for Traditional Assets Strategy.
+2024-10-02 22:26:34,053 - INFO - Calculating performance metrics for Crypto Strategy.
+2024-10-02 22:26:34,056 - INFO - Calculated Sharpe Ratio for Crypto Strategy: 1.3011
+2024-10-02 22:26:34,057 - INFO - Fetching S&P 500 data from 2023-10-01 to 2024-09-29 using yfinance for Crypto Strategy.
+2024-10-02 22:26:34,170 - INFO - Calculated Beta for Crypto Strategy: -0.0253
+2024-10-02 22:26:34,170 - INFO - Calculated Alpha for Crypto Strategy: 0.0063
+2024-10-02 22:26:34,170 - INFO - Calculating performance metrics for Traditional Assets Strategy.
+2024-10-02 22:26:34,179 - INFO - Calculated Sharpe Ratio for Traditional Assets Strategy: nan
+2024-10-02 22:26:34,179 - INFO - Fetching S&P 500 data from 2023-10-01 to 2024-09-29 using yfinance for Traditional Assets Strategy.
+2024-10-02 22:26:34,207 - WARNING - Not enough data points to perform regression for Traditional Assets Strategy.
+2024-10-02 22:26:37,473 - INFO - Fetching historical price data for Traditional Assets for plotting.
+2024-10-02 22:26:37,647 - INFO - Plotting daily returns for Traditional Assets.
+2024-10-02 22:36:44,870 - INFO - Loaded Crypto price and market cap data successfully.
+2024-10-02 22:36:44,872 - INFO - Calculating factors (Momentum, Size, Value) for Crypto Strategy.
+2024-10-02 22:36:45,089 - INFO - Starting Traditional Assets backtest.
+2024-10-02 22:36:45,089 - INFO - Fetching historical price data for Traditional Assets from yfinance.
+2024-10-02 22:36:45,746 - INFO - Fetched data for tickers: ['SUSA', 'IYT', 'VPU', 'GLD', 'QQQ', 'ESGU', 'VGT', 'VHT', 'XLK']
+2024-10-02 22:36:45,747 - INFO - Data after forward fill and dropna: 250 rows and 9 columns.
+2024-10-02 22:36:45,749 - INFO - Rebalance dates: DatetimeIndex(['2023-10-02', '2023-10-09', '2023-10-16', '2023-10-23',
+               '2023-10-30', '2023-11-06', '2023-11-13', '2023-11-20',
+               '2023-11-27', '2023-12-04', '2023-12-11', '2023-12-18',
+               '2023-12-25', '2024-01-01', '2024-01-08', '2024-01-15',
+               '2024-01-22', '2024-01-29', '2024-02-05', '2024-02-12',
+               '2024-02-19', '2024-02-26', '2024-03-04', '2024-03-11',
+               '2024-03-18', '2024-03-25', '2024-04-01', '2024-04-08',
+               '2024-04-15', '2024-04-22', '2024-04-29', '2024-05-06',
+               '2024-05-13', '2024-05-20', '2024-05-27', '2024-06-03',
+               '2024-06-10', '2024-06-17', '2024-06-24', '2024-07-01',
+               '2024-07-08', '2024-07-15', '2024-07-22', '2024-07-29',
+               '2024-08-05', '2024-08-12', '2024-08-19', '2024-08-26',
+               '2024-09-02', '2024-09-09', '2024-09-16', '2024-09-23'],
+              dtype='datetime64[ns]', freq='W-MON')
+2024-10-02 22:36:45,751 - INFO - Rebalancing portfolio on 2023-10-02
+2024-10-02 22:36:45,752 - WARNING - Rebalance date 2023-10-02 not found in data index. Skipping this date.
+2024-10-02 22:36:45,752 - INFO - Rebalancing portfolio on 2023-10-09
+2024-10-02 22:36:45,752 - WARNING - Rebalance date 2023-10-09 not found in data index. Skipping this date.
+2024-10-02 22:36:45,752 - INFO - Rebalancing portfolio on 2023-10-16
+2024-10-02 22:36:45,753 - WARNING - Rebalance date 2023-10-16 not found in data index. Skipping this date.
+2024-10-02 22:36:45,753 - INFO - Rebalancing portfolio on 2023-10-23
+2024-10-02 22:36:45,753 - WARNING - Rebalance date 2023-10-23 not found in data index. Skipping this date.
+2024-10-02 22:36:45,753 - INFO - Rebalancing portfolio on 2023-10-30
+2024-10-02 22:36:45,754 - WARNING - Rebalance date 2023-10-30 not found in data index. Skipping this date.
+2024-10-02 22:36:45,754 - INFO - Rebalancing portfolio on 2023-11-06
+2024-10-02 22:36:45,754 - WARNING - Rebalance date 2023-11-06 not found in data index. Skipping this date.
+2024-10-02 22:36:45,755 - INFO - Rebalancing portfolio on 2023-11-13
+2024-10-02 22:36:45,755 - WARNING - Rebalance date 2023-11-13 not found in data index. Skipping this date.
+2024-10-02 22:36:45,755 - INFO - Rebalancing portfolio on 2023-11-20
+2024-10-02 22:36:45,755 - WARNING - Rebalance date 2023-11-20 not found in data index. Skipping this date.
+2024-10-02 22:36:45,755 - INFO - Rebalancing portfolio on 2023-11-27
+2024-10-02 22:36:45,756 - WARNING - Rebalance date 2023-11-27 not found in data index. Skipping this date.
+2024-10-02 22:36:45,756 - INFO - Rebalancing portfolio on 2023-12-04
+2024-10-02 22:36:45,756 - WARNING - Rebalance date 2023-12-04 not found in data index. Skipping this date.
+2024-10-02 22:36:45,756 - INFO - Rebalancing portfolio on 2023-12-11
+2024-10-02 22:36:45,757 - WARNING - Rebalance date 2023-12-11 not found in data index. Skipping this date.
+2024-10-02 22:36:45,757 - INFO - Rebalancing portfolio on 2023-12-18
+2024-10-02 22:36:45,757 - WARNING - Rebalance date 2023-12-18 not found in data index. Skipping this date.
+2024-10-02 22:36:45,758 - INFO - Rebalancing portfolio on 2023-12-25
+2024-10-02 22:36:45,758 - WARNING - Rebalance date 2023-12-25 not found in data index. Skipping this date.
+2024-10-02 22:36:45,758 - INFO - Rebalancing portfolio on 2024-01-01
+2024-10-02 22:36:45,758 - WARNING - Rebalance date 2024-01-01 not found in data index. Skipping this date.
+2024-10-02 22:36:45,758 - INFO - Rebalancing portfolio on 2024-01-08
+2024-10-02 22:36:45,759 - WARNING - Rebalance date 2024-01-08 not found in data index. Skipping this date.
+2024-10-02 22:36:45,759 - INFO - Rebalancing portfolio on 2024-01-15
+2024-10-02 22:36:45,759 - WARNING - Rebalance date 2024-01-15 not found in data index. Skipping this date.
+2024-10-02 22:36:45,759 - INFO - Rebalancing portfolio on 2024-01-22
+2024-10-02 22:36:45,759 - WARNING - Rebalance date 2024-01-22 not found in data index. Skipping this date.
+2024-10-02 22:36:45,760 - INFO - Rebalancing portfolio on 2024-01-29
+2024-10-02 22:36:45,760 - WARNING - Rebalance date 2024-01-29 not found in data index. Skipping this date.
+2024-10-02 22:36:45,760 - INFO - Rebalancing portfolio on 2024-02-05
+2024-10-02 22:36:45,760 - WARNING - Rebalance date 2024-02-05 not found in data index. Skipping this date.
+2024-10-02 22:36:45,760 - INFO - Rebalancing portfolio on 2024-02-12
+2024-10-02 22:36:45,761 - WARNING - Rebalance date 2024-02-12 not found in data index. Skipping this date.
+2024-10-02 22:36:45,761 - INFO - Rebalancing portfolio on 2024-02-19
+2024-10-02 22:36:45,761 - WARNING - Rebalance date 2024-02-19 not found in data index. Skipping this date.
+2024-10-02 22:36:45,761 - INFO - Rebalancing portfolio on 2024-02-26
+2024-10-02 22:36:45,762 - WARNING - Rebalance date 2024-02-26 not found in data index. Skipping this date.
+2024-10-02 22:36:45,762 - INFO - Rebalancing portfolio on 2024-03-04
+2024-10-02 22:36:45,762 - WARNING - Rebalance date 2024-03-04 not found in data index. Skipping this date.
+2024-10-02 22:36:45,762 - INFO - Rebalancing portfolio on 2024-03-11
+2024-10-02 22:36:45,762 - WARNING - Rebalance date 2024-03-11 not found in data index. Skipping this date.
+2024-10-02 22:36:45,763 - INFO - Rebalancing portfolio on 2024-03-18
+2024-10-02 22:36:45,763 - WARNING - Rebalance date 2024-03-18 not found in data index. Skipping this date.
+2024-10-02 22:36:45,763 - INFO - Rebalancing portfolio on 2024-03-25
+2024-10-02 22:36:45,763 - WARNING - Rebalance date 2024-03-25 not found in data index. Skipping this date.
+2024-10-02 22:36:45,763 - INFO - Rebalancing portfolio on 2024-04-01
+2024-10-02 22:36:45,763 - WARNING - Rebalance date 2024-04-01 not found in data index. Skipping this date.
+2024-10-02 22:36:45,764 - INFO - Rebalancing portfolio on 2024-04-08
+2024-10-02 22:36:45,764 - WARNING - Rebalance date 2024-04-08 not found in data index. Skipping this date.
+2024-10-02 22:36:45,764 - INFO - Rebalancing portfolio on 2024-04-15
+2024-10-02 22:36:45,764 - WARNING - Rebalance date 2024-04-15 not found in data index. Skipping this date.
+2024-10-02 22:36:45,764 - INFO - Rebalancing portfolio on 2024-04-22
+2024-10-02 22:36:45,765 - WARNING - Rebalance date 2024-04-22 not found in data index. Skipping this date.
+2024-10-02 22:36:45,765 - INFO - Rebalancing portfolio on 2024-04-29
+2024-10-02 22:36:45,765 - WARNING - Rebalance date 2024-04-29 not found in data index. Skipping this date.
+2024-10-02 22:36:45,765 - INFO - Rebalancing portfolio on 2024-05-06
+2024-10-02 22:36:45,766 - WARNING - Rebalance date 2024-05-06 not found in data index. Skipping this date.
+2024-10-02 22:36:45,766 - INFO - Rebalancing portfolio on 2024-05-13
+2024-10-02 22:36:45,766 - WARNING - Rebalance date 2024-05-13 not found in data index. Skipping this date.
+2024-10-02 22:36:45,766 - INFO - Rebalancing portfolio on 2024-05-20
+2024-10-02 22:36:45,767 - WARNING - Rebalance date 2024-05-20 not found in data index. Skipping this date.
+2024-10-02 22:36:45,767 - INFO - Rebalancing portfolio on 2024-05-27
+2024-10-02 22:36:45,767 - WARNING - Rebalance date 2024-05-27 not found in data index. Skipping this date.
+2024-10-02 22:36:45,767 - INFO - Rebalancing portfolio on 2024-06-03
+2024-10-02 22:36:45,768 - WARNING - Rebalance date 2024-06-03 not found in data index. Skipping this date.
+2024-10-02 22:36:45,768 - INFO - Rebalancing portfolio on 2024-06-10
+2024-10-02 22:36:45,769 - WARNING - Rebalance date 2024-06-10 not found in data index. Skipping this date.
+2024-10-02 22:36:45,769 - INFO - Rebalancing portfolio on 2024-06-17
+2024-10-02 22:36:45,769 - WARNING - Rebalance date 2024-06-17 not found in data index. Skipping this date.
+2024-10-02 22:36:45,769 - INFO - Rebalancing portfolio on 2024-06-24
+2024-10-02 22:36:45,769 - WARNING - Rebalance date 2024-06-24 not found in data index. Skipping this date.
+2024-10-02 22:36:45,769 - INFO - Rebalancing portfolio on 2024-07-01
+2024-10-02 22:36:45,770 - WARNING - Rebalance date 2024-07-01 not found in data index. Skipping this date.
+2024-10-02 22:36:45,771 - INFO - Rebalancing portfolio on 2024-07-08
+2024-10-02 22:36:45,771 - WARNING - Rebalance date 2024-07-08 not found in data index. Skipping this date.
+2024-10-02 22:36:45,771 - INFO - Rebalancing portfolio on 2024-07-15
+2024-10-02 22:36:45,771 - WARNING - Rebalance date 2024-07-15 not found in data index. Skipping this date.
+2024-10-02 22:36:45,771 - INFO - Rebalancing portfolio on 2024-07-22
+2024-10-02 22:36:45,771 - WARNING - Rebalance date 2024-07-22 not found in data index. Skipping this date.
+2024-10-02 22:36:45,771 - INFO - Rebalancing portfolio on 2024-07-29
+2024-10-02 22:36:45,772 - WARNING - Rebalance date 2024-07-29 not found in data index. Skipping this date.
+2024-10-02 22:36:45,772 - INFO - Rebalancing portfolio on 2024-08-05
+2024-10-02 22:36:45,772 - WARNING - Rebalance date 2024-08-05 not found in data index. Skipping this date.
+2024-10-02 22:36:45,772 - INFO - Rebalancing portfolio on 2024-08-12
+2024-10-02 22:36:45,773 - WARNING - Rebalance date 2024-08-12 not found in data index. Skipping this date.
+2024-10-02 22:36:45,773 - INFO - Rebalancing portfolio on 2024-08-19
+2024-10-02 22:36:45,774 - WARNING - Rebalance date 2024-08-19 not found in data index. Skipping this date.
+2024-10-02 22:36:45,774 - INFO - Rebalancing portfolio on 2024-08-26
+2024-10-02 22:36:45,774 - WARNING - Rebalance date 2024-08-26 not found in data index. Skipping this date.
+2024-10-02 22:36:45,775 - INFO - Rebalancing portfolio on 2024-09-02
+2024-10-02 22:36:45,775 - WARNING - Rebalance date 2024-09-02 not found in data index. Skipping this date.
+2024-10-02 22:36:45,776 - INFO - Rebalancing portfolio on 2024-09-09
+2024-10-02 22:36:45,776 - WARNING - Rebalance date 2024-09-09 not found in data index. Skipping this date.
+2024-10-02 22:36:45,776 - INFO - Rebalancing portfolio on 2024-09-16
+2024-10-02 22:36:45,777 - WARNING - Rebalance date 2024-09-16 not found in data index. Skipping this date.
+2024-10-02 22:36:45,777 - INFO - Rebalancing portfolio on 2024-09-23
+2024-10-02 22:36:45,777 - WARNING - Rebalance date 2024-09-23 not found in data index. Skipping this date.
+2024-10-02 22:36:45,778 - INFO - Completed backtest for Traditional Assets Strategy.
+2024-10-02 22:36:45,779 - INFO - Calculating performance metrics for Crypto Strategy.
+2024-10-02 22:36:45,781 - INFO - Calculated Sharpe Ratio for Crypto Strategy: 1.3011
+2024-10-02 22:36:45,782 - INFO - Fetching S&P 500 data from 2023-10-01 to 2024-09-29 using yfinance for Crypto Strategy.
+2024-10-02 22:36:45,970 - INFO - Calculated Beta for Crypto Strategy: -0.0253
+2024-10-02 22:36:45,970 - INFO - Calculated Alpha for Crypto Strategy: 0.0063
+2024-10-02 22:36:45,970 - INFO - Calculating performance metrics for Traditional Assets Strategy.
+2024-10-02 22:36:45,980 - INFO - Calculated Sharpe Ratio for Traditional Assets Strategy: nan
+2024-10-02 22:36:45,980 - INFO - Fetching S&P 500 data from 2023-10-01 to 2024-09-29 using yfinance for Traditional Assets Strategy.
+2024-10-02 22:36:46,032 - WARNING - Not enough data points to perform regression for Traditional Assets Strategy.
