@@ -1,0 +1,347 @@
+import pandas as pd
+import numpy as np
+import datetime
+import matplotlib.pyplot as plt
+import cvxpy as cp
+from sklearn.covariance import LedoitWolf
+import warnings
+warnings.filterwarnings('ignore')
+
+def read_asset_data(file_path, asset_name):
+    """
+    Reads asset data from a CSV file and returns a DataFrame with columns:
+    - date
+    - price
+    - volume
+    - asset
+    """
+    # Read CSV file
+    df = pd.read_csv(file_path)
+    
+    # Ensure the required columns are present
+    required_columns = ['date', 'price', 'volume']
+    if not all(col in df.columns for col in required_columns):
+        print(f"CSV file {file_path} is missing one of the required columns: {required_columns}")
+        return pd.DataFrame()
+    
+    # Convert 'date' column to datetime
+    df['date'] = pd.to_datetime(df['date'])
+    
+    # Convert 'price' and 'volume' to numeric
+    df['price'] = pd.to_numeric(df['price'], errors='coerce')
+    df['volume'] = pd.to_numeric(df['volume'], errors='coerce')
+    
+    # Drop rows with NaNs in 'price' or 'volume'
+    df = df.dropna(subset=['date', 'price', 'volume'])
+    
+    # Add 'asset' column
+    df['asset'] = asset_name
+    
+    # Sort by date
+    df = df.sort_values('date').reset_index(drop=True)
+    
+    return df
+def calculate_returns(df):
+    """
+    Calculate daily returns from price data.
+    """
+    df = df.sort_values('date')
+    df['return'] = df['price'].pct_change()
+    df = df.dropna(subset=['return'])
+    return df
+def compute_covariance_matrix(returns):
+    """
+    Compute the covariance matrix using the Ledoit-Wolf shrinkage estimator.
+    """
+    lw = LedoitWolf().fit(returns)
+    cov_matrix = pd.DataFrame(lw.covariance_, index=returns.columns, columns=returns.columns)
+    return cov_matrix
+
+def optimize_portfolio(returns, target_return, cov_matrix, median_volumes, M, f_i):
+    """
+    Optimize the portfolio weights using the LIBRO approach with liquidity constraints.
+    """
+    assets = returns.columns.tolist()
+    num_assets = len(assets)
+    w = cp.Variable(num_assets)
+    expected_returns = returns.mean().values
+    portfolio_return = expected_returns @ w
+    portfolio_variance = cp.quad_form(w, cov_matrix.values)
+    
+    # Liquidity constraints
+    TV_i_median = median_volumes.loc[assets].values
+    a_i = (f_i * TV_i_median) / M
+    
+    constraints = [
+        cp.sum(w) == 1,
+        w >= 0,
+        w <= a_i,  # Liquidity constraints
+        portfolio_return >= target_return
+    ]
+    
+    objective = cp.Minimize(portfolio_variance)
+    problem = cp.Problem(objective, constraints)
+    problem.solve(solver=cp.SCS)
+    
+    if problem.status not in ["optimal", "optimal_inaccurate"]:
+        print("Optimization problem did not converge.")
+        return None
+    
+    weights = pd.Series(w.value, index=assets)
+    return weights
+
+import datetime
+
+# Investment amount
+M = 100_000_000  # $100 million
+
+# Liquidity factor
+f_i = 0.01  # 1% of median trading volume
+
+# Date range
+start_date = datetime.date(2021, 1, 1)
+end_date = datetime.date(2021, 12, 31)
+
+# List of assets with their corresponding CSV file paths
+
+# Crypto assets
+crypto_assets = {
+    'BTC': 'Data/Crypto/BTC.csv',
+    'ETH': 'Data/Crypto/ETH.csv',
+    'BNB': 'Data/Crypto/BNB.csv',
+    'XRP': 'Data/Crypto/XRP.csv',
+    'ADA': 'Data/Crypto/ADA.csv',
+    'DOGE': 'Data/Crypto/DOGE.csv',
+    'SOL': 'Data/Crypto/SOL.csv',
+    'TON': 'Data/Crypto/TON.csv',
+    'TRX': 'Data/Crypto/TRX.csv',
+    'AVAX': 'Data/Crypto/AVAX.csv',
+}
+
+# Stock assets
+stock_assets = {
+    'AAPL': 'DATA/S&P500/AAPL.csv',
+    'MSFT': 'DATA/S&P500/MSFT.csv',
+    'AMZN': 'DATA/S&P500/AMZN.csv',
+    'GOOGL': 'DATA/S&P500/GOOGL.csv',
+    'TSLA': 'DATA/S&P500/TSLA.csv',
+    'META': 'DATA/S&P500/META.csv',
+    'NVDA': 'DATA/S&P500/NVDA.csv',
+    'VST': 'DATA/S&P500/VST.csv',
+    'CEG': 'DATA/S&P500/CEG.csv',
+    'PLTR': 'DATA/S&P500/PLTR.csv',
+    'HWM': 'DATA/S&P500/HWM.csv',
+    'GE': 'DATA/S&P500/GE.csv',
+    'NRG': 'DATA/S&P500/NRG.csv',
+    'TRGP': 'DATA/S&P500/TRGP.csv',
+    'IRM': 'DATA/S&P500/IRM.csv',
+}
+
+# ETF assets
+etf_assets = {
+    'FNGU': 'DATA/ETFS/FNGU.csv',
+    'FTEC': 'DATA/ETFS/FTEC.csv',
+    'SMH': 'DATA/ETFS/SMH.csv',
+    'TECL': 'DATA/ETFS/TECL.csv',
+    'TQQQ': 'DATA/ETFS/TQQQ.csv',
+    'USD': 'DATA/ETFS/USD.csv',
+    'ESGU': 'DATA/ETFS/ESGU.csv',  
+    'GLD': 'DATA/ETFS/GLD.csv',   
+    'IYT': 'DATA/ETFS/IYT.csv',    
+    'QQQ': 'DATA/ETFS/QQQ.csv',   
+    'SUSA': 'DATA/ETFS/SUSA.csv',  
+    'VGT': 'DATA/ETFS/VGT.csv',   
+    'VHT': 'DATA/ETFS/VHT.csv',    
+    'VPU': 'DATA/ETFS/VPU.csv',    
+    'XLK': 'DATA/ETFS/XLK.csv',   
+}
+
+# Read cryptocurrency data
+crypto_data_list = []
+for asset_name, file_path in crypto_assets.items():
+    print(f"Reading data for {asset_name} from {file_path}...")
+    df = read_asset_data(file_path, asset_name)
+    if not df.empty:
+        crypto_data_list.append(df)
+
+crypto_data = pd.concat(crypto_data_list, ignore_index=True)
+
+# Read stock and ETF data
+stock_data_list = []
+all_assets = {**stock_assets, **etf_assets}
+for asset_name, file_path in all_assets.items():
+    print(f"Reading data for {asset_name} from {file_path}...")
+    df = read_asset_data(file_path, asset_name)
+    if not df.empty:
+        stock_data_list.append(df)
+
+stock_data = pd.concat(stock_data_list, ignore_index=True)
+
+# Combine crypto and stock data
+all_data = pd.concat([crypto_data, stock_data], ignore_index=True)
+all_data
+
+# Filter data within the date range
+all_data = all_data[(all_data['date'] >= pd.to_datetime(start_date)) & (all_data['date'] <= pd.to_datetime(end_date))]
+all_data = all_data.reset_index(drop=True)
+all_data
+
+# Group by asset and calculate returns
+returns_list = []
+for asset, group in all_data.groupby('asset'):
+    group = calculate_returns(group)
+    returns_list.append(group[['date', 'asset', 'return', 'volume']])
+
+returns_data = pd.concat(returns_list, ignore_index=True)
+returns_data
+
+# Pivot to have assets as columns
+returns_pivot = returns_data.pivot(index='date', columns='asset', values='return')
+returns_pivot.sort_index(inplace=True)
+returns_pivot
+
+median_volumes = returns_data.groupby('asset')['volume'].median()
+median_volumes
+
+# Rebalancing dates (e.g., monthly)
+rebalancing_dates = pd.date_range(start=start_date, end=end_date, freq='M')
+rebalancing_dates
+
+# Set minimum training days
+MIN_TRAINING_DAYS = 60  # Adjust as needed
+
+portfolio_weights = {}
+portfolio_returns = []
+
+for i, rebalance_date in enumerate(rebalancing_dates):
+    print(f"\nRebalancing on {rebalance_date.date()}")
+
+    # Define the training period up to the rebalance date
+    train_data = returns_pivot.loc[:rebalance_date].dropna(axis=1, how='any')
+
+    # Ensure sufficient data
+    if len(train_data) < MIN_TRAINING_DAYS:
+        print("Not enough data for optimization. Skipping this date.")
+        continue
+
+    # Calculate expected returns and covariance matrix
+    expected_returns = train_data.mean()
+    cov_matrix = compute_covariance_matrix(train_data)
+
+    # Define target return (e.g., desired annual return converted to daily)
+    desired_annual_return = 0.10  # 10% annual return
+    target_return = desired_annual_return / 252  # Convert to daily
+
+    # Median volumes for assets in the training data
+    median_vols = median_volumes.loc[train_data.columns]
+
+    # Optimize portfolio
+    weights = optimize_portfolio(
+        returns=train_data,
+        target_return=target_return,
+        cov_matrix=cov_matrix,
+        median_volumes=median_vols,
+        M=M,
+        f_i=f_i
+    )
+
+    if weights is None:
+        continue
+
+    # Store weights
+    portfolio_weights[rebalance_date.date()] = weights
+
+    # Apply weights to returns between this rebalance date and the next
+    if i < len(rebalancing_dates) - 1:
+        next_rebalance_date = rebalancing_dates[i + 1]
+    else:
+        next_rebalance_date = end_date
+
+    # Get returns for the holding period
+    holding_period_returns = returns_pivot.loc[rebalance_date:next_rebalance_date, weights.index]
+    holding_period_returns = holding_period_returns.dropna(how='any')
+
+    # Calculate portfolio returns
+    for date, row in holding_period_returns.iterrows():
+        portfolio_return = np.dot(row.values, weights.values)
+        portfolio_returns.append({'date': date, 'portfolio_return': portfolio_return})
+
+# Convert portfolio returns to DataFrame
+portfolio_returns_df = pd.DataFrame(portfolio_returns)
+portfolio_returns_df = portfolio_returns_df.sort_values('date')
+portfolio_returns_df.set_index('date', inplace=True)
+
+
+portfolio_returns_df
+
+# Calculate cumulative returns
+portfolio_returns_df['cumulative_return'] = (1 + portfolio_returns_df['portfolio_return']).cumprod() - 1
+
+# Annualized return
+total_period_days = (portfolio_returns_df.index[-1] - portfolio_returns_df.index[0]).days
+annual_return = (portfolio_returns_df['cumulative_return'].iloc[-1] + 1) ** (365 / total_period_days) - 1
+
+# Annualized volatility
+annual_volatility = portfolio_returns_df['portfolio_return'].std() * np.sqrt(252)
+
+# Sharpe ratio (Assuming risk-free rate is 0)
+sharpe_ratio = annual_return / annual_volatility
+
+# Maximum drawdown
+rolling_max = portfolio_returns_df['cumulative_return'].cummax()
+drawdown = rolling_max - portfolio_returns_df['cumulative_return']
+max_drawdown = drawdown.max()
+
+print("\nPerformance Metrics:")
+print(f"Annualized Return: {annual_return:.2%}")
+print(f"Annualized Volatility: {annual_volatility:.2%}")
+print(f"Sharpe Ratio: {sharpe_ratio:.2f}")
+print(f"Maximum Drawdown: {max_drawdown:.2%}")
+
+# Plot cumulative returns
+plt.figure(figsize=(12, 6))
+plt.plot(portfolio_returns_df.index, portfolio_returns_df['cumulative_return'] * 100, label='LIBRO Portfolio')
+plt.title('LIBRO Portfolio Cumulative Returns')
+plt.xlabel('Date')
+plt.ylabel('Cumulative Return (%)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Plot asset weights over time
+weights_df = pd.DataFrame(portfolio_weights).T
+weights_df.index = pd.to_datetime(weights_df.index)
+weights_df.sort_index(inplace=True)
+
+weights_df.plot(kind='area', figsize=(12, 6), stacked=False)
+plt.title('Portfolio Asset Allocation Over Time')
+plt.xlabel('Rebalance Date')
+plt.ylabel('Weight')
+plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+plt.show()
+
+# Read benchmark data (e.g., SPY)
+benchmark_file = 'path_to_csv/SPY.csv'  # Replace with your file path
+benchmark_df = read_asset_data(benchmark_file, 'SPY')
+benchmark_df = calculate_returns(benchmark_df)
+benchmark_df.set_index('date', inplace=True)
+benchmark_df['cumulative_return'] = (1 + benchmark_df['return']).cumprod() - 1
+# Align dates
+common_dates = portfolio_returns_df.index.intersection(benchmark_df.index)
+
+plt.figure(figsize=(12, 6))
+plt.plot(portfolio_returns_df.loc[common_dates].index,
+         portfolio_returns_df.loc[common_dates, 'cumulative_return'] * 100,
+         label='LIBRO Portfolio')
+plt.plot(benchmark_df.loc[common_dates].index,
+         benchmark_df.loc[common_dates, 'cumulative_return'] * 100,
+         label='Benchmark (SPY)')
+plt.title('Portfolio vs. Benchmark Cumulative Returns')
+plt.xlabel('Date')
+plt.ylabel('Cumulative Return (%)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+
