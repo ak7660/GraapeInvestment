@@ -6,3 +6,4 @@ matplotlib
 ipykernel
 scikit-learn
 plotly
+seaborn
