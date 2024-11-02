@@ -16,7 +16,7 @@ The strategy employs **Factor Investing** principles with a dynamic **Synthetic 
    - This helps mitigate potential losses during market downturns while allowing for upside potential.
 
 ## Key Components of the Code
-
+#### >> strategy.ipynb
 ### 1. **Setup & Data Loading**
    - The strategy loads historical price and market cap data for the top 10 cryptocurrencies and traditional assets (ETFs, gold) using CSV files and `yfinance`.
    - Data is cleaned and prepared for backtesting.
